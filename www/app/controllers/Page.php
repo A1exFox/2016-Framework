@@ -1,16 +1,15 @@
 <?php
+
 namespace app\controllers;
+
 use vendor\core\base\Controller;
 
-class Posts extends Controller
+class Page extends Controller
 {
-    public function indexAction()
-    {
-        echo __METHOD__;
-    }
-    public function testAction()
+    public function viewAction()
     {
         debug($this->route);
+        debug($_GET);
         echo __METHOD__;
     }
 }

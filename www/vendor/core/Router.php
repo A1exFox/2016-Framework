@@ -1,5 +1,5 @@
 <?php
-
+namespace vendor\core;
 class Router
 {
     protected static $routes = [];
@@ -25,6 +25,7 @@ class Router
                         $route[$k] = $v;
                     }
                 }
+                $route['controller'] = self::upperCamelCase($route['controller']);
                 if (!isset($route['action'])) {
                     $route['action'] = 'index';
                 }
@@ -36,11 +37,12 @@ class Router
     }
     public static function dispatch($url)
     {
+        $url = self::removeQueryString($url);
+        debug($url);
         if (self::matchRoute($url)) {
-            $controller = self::$route['controller'];
-            $controller = self::upperCamelCase($controller);
+            $controller = 'app\\controllers\\' . self::$route['controller'];
             if (class_exists($controller)) {
-                $cObj = new $controller;
+                $cObj = new $controller(self::$route);
                 $action = self::$route['action'];
                 $action = self::lowerCamelCase($action) . 'Action';
                 if (method_exists($cObj, $action)) {
@@ -66,5 +68,18 @@ class Router
     protected static function lowerCamelCase($name)
     {
         return lcfirst(self::upperCamelCase($name));
+    }
+
+    protected static function removeQueryString($url)
+    {
+        if ($url) {
+            $params = explode('&', $url, 2);
+            if (strpos($params[0], '=') === false) {
+                return rtrim($params[0], '/');
+            } else {
+                return '';
+            }
+        }
+        return $url;
     }
 }
