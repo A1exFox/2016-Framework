@@ -17,7 +17,6 @@ class View
     }
     public function render($vars)
     {
-        debug($vars);
         extract($vars);
         $file_view = APP . "/views/{$this->route['controller']}/{$this->view}.php";
         ob_start();
