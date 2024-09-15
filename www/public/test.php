@@ -1,13 +1,13 @@
 <?php
-require 'rb.php';
-function debug($data)
-{
-    echo '<pre>'. print_r($data, true) .'</pre>';
-}
-
-R::setup('mysql:host=mysql;dbname=userdb;charset=utf8', 'user', 'password');
-R::freeze(true);
-R::fancyDebug(true);
+//require 'rb.php';
+//function debug($data)
+//{
+//    echo '<pre>'. print_r($data, true) .'</pre>';
+//}
+//
+//R::setup('mysql:host=mysql;dbname=userdb;charset=utf8', 'user', 'password');
+//R::freeze(true);
+//R::fancyDebug(true);
 //var_dump(R::testConnection());
 
 // Create
