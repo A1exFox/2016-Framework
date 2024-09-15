@@ -11,9 +11,15 @@ class MainController extends AppController
     {
 //        $model = new Main();
         $posts = R::findAll('posts');
+        $post = R::findOne('posts', 'id = 2');
         $menu = $this->menu;
-//        $this->test();
-        $title = 'Page title';
-        $this->set(compact('title', 'posts', 'menu'));
+//        $this->setMeta($post->title, $post->description, $post->keywords);
+        $this->setMeta('Index', 'Description index', 'Keywords index');
+        $meta = $this->meta;
+        $this->set(compact('posts', 'menu', 'meta'));
+    }
+    public function testAction()
+    {
+        $this->layout = 'test';
     }
 }

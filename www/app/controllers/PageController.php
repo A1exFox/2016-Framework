@@ -6,8 +6,8 @@ class PageController extends AppController
 {
     public function viewAction()
     {
-        debug($this->route);
-        debug($_GET);
-        echo __METHOD__;
+        $menu = $this->menu;
+        $title = 'View Page';
+        $this->set(compact(['title', 'menu']));
     }
 }
