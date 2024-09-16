@@ -12,10 +12,10 @@ class AppController extends Controller
     public function __construct($route)
     {
         parent::__construct($route);
-        if ($route['action'] !== 'test') {
-            new Main();
-            $this->menu = \R::findAll('category');
-        }
+//        if ($route['action'] !== 'test') {
+//            new Main();
+//            $this->menu = \R::findAll('category');
+//        }
     }
 
     protected function setMeta($title = '', $description = '', $keywords = '')

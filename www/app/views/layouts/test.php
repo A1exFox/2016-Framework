@@ -11,7 +11,6 @@
 </head>
 <body>
 <div class="wrapper">
-    There is no menu
     <h1>Layout: Test</h1>
 
     <?= $content ?>

@@ -7,6 +7,7 @@ class View
     public $route = [];
     public $view;
     public $layout;
+    public $scripts = '';
     public function __construct($route, $layout = '', $view = '') {
         $this->route = $route;
         if ($layout === false)
@@ -25,15 +26,26 @@ class View
         else
             echo "<p>File view: <b>$file_view</b> is not found</p>";
         $content = ob_get_clean();
-
         if ($this->layout !== false) {
             $file_layout = APP . "/views/layouts/{$this->layout}.php";
-            if (is_file($file_layout))
+            if (is_file($file_layout)) {
+                $content = $this->getScript($content);
                 require $file_layout;
-            else
+            } else {
                 echo "<p>File layout: <b>$file_layout</b> is not found</p>";
+            }
         } else {
 
         }
+    }
+
+    protected function getScript($content)
+    {
+        $pattern = '#<script.*?>.*?</script>#si';
+        $matches;
+        if (false !== preg_match_all($pattern, $content, $matches))
+            $content = preg_replace($pattern, '', $content);
+        $this->scripts = implode("\n", $matches[0]) . "\n";
+        return $content;
     }
 }

@@ -1,13 +1,32 @@
-    <?php if(!empty($posts)): ?>
-    <?php foreach ($posts as $post): ?>
+<button class="btn btn-primary" id="send">Button</button>
+<?php if(!empty($posts)): ?>
     <div class="container">
-        <div class="card" style="width: 18rem;">
-            <div class="card-body">
-                <h5 class="card-title"><?= $post['title'] ?></h5>
-                <p class="card-text"><?= $post['text'] ?></p>
+        <?php foreach ($posts as $post): ?>
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title"><?= $post['title'] ?></h5>
+                    <p class="card-text"><?= $post['text'] ?></p>
+                </div>
             </div>
-        </div>
+        <?php endforeach; ?>
     </div>
-    <?php endforeach; ?>
-    <?php endif; ?>
+<?php endif; ?>
+
+<script src="js/script.js"></script>
 <code>View: <?= __FILE__?></code>
+<script>
+    $('#send').click(function () {
+        $.ajax({
+            url: '/main/test',
+            type: 'post',
+            data: {'id': 2},
+            success: function (res) {
+                console.log(res)
+            },
+            error: function () {
+                alert('Error')
+            },
+        })
+    })
+</script>
+<pre>Example</pre>
