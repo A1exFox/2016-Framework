@@ -27,4 +27,14 @@ abstract class Controller
     {
         return isset($_SERVER["HTTP_X_REQUESTED_WITH"]) && $_SERVER["HTTP_X_REQUESTED_WITH"] === 'XMLHttpRequest';
     }
+    public function loadView($view, $vars = [])
+    {
+        $file = APP . "/views/{$this->route['controller']}/{$view}.php";
+        if (is_file($file)) {
+            extract($vars);
+            require $file;
+        } else {
+            echo "file: <b>{$file}</b> wasn't found";
+        }
+    }
 }
