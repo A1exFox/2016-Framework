@@ -1,5 +1,6 @@
 <?php
 namespace vendor\core;
+use Exception;
 class Router
 {
     protected static $routes = [];
@@ -48,14 +49,13 @@ class Router
                     $cObj->$action();
                     $cObj->getView();
                 } else {
-                    echo "method {$controller}::{$action} is not exist";
+                    throw new Exception("Method: <b>{$controller}::{$action}</b> not found");
                 }
             } else {
-                echo "controller: $controller is not exist";
+                throw new Exception("Controller: <b>$controller</b> not found");
             }
         } else {
-            http_response_code(404);
-            include '404.html';
+            throw new Exception("No matching routes for request: <b>{$url}</b>", 404);
         }
     }
 
