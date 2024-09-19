@@ -5,3 +5,4 @@ www/vendor/*
 www/tmp
 !www/vendor/core
 !www/vendor/libs
+!www/vendor/widgets

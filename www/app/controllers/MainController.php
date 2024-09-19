@@ -21,6 +21,8 @@ class MainController extends AppController
     {
         if ($this->isAjax()) {
             new Main();
+//            $data = ['answer' => 'Server response', 'code' => '200'];
+//            echo json_encode($data);
             $post = R::findOne('posts', 'id = ?', [$_POST['id']]);
             $this->loadView('_test', compact('post'));
             die();

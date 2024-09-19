@@ -2,6 +2,7 @@
 command="$1";
 alias="$2";
 if [ "$command" == "up" ]; then
+    docker compose down
     docker compose up -d $alias
 elif [ "$command" == "down" ]; then
     docker compose down

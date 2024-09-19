@@ -16,6 +16,32 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `categories`
+--
+
+DROP TABLE IF EXISTS `categories`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `categories` (
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(200) COLLATE utf8mb4_general_ci NOT NULL,
+  `parent` int unsigned NOT NULL,
+  `alias` varchar(200) COLLATE utf8mb4_general_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=896 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `categories`
+--
+
+LOCK TABLES `categories` WRITE;
+/*!40000 ALTER TABLE `categories` DISABLE KEYS */;
+INSERT INTO `categories` VALUES (685,'Комплектующие к Apple',0,'komplektuyushie-k-apple'),(691,'Запчасти iPad',685,'zapchasti-ipad'),(692,'Запчасти iPhone',685,'zapchasti-iphone'),(693,'Запчасти iPod',685,'zapchasti-ipod'),(694,'Запчасти Mac',685,'zapchasti-mac'),(695,'iPad',691,'ipad'),(696,'iPad 2',691,'ipad-2'),(697,'iPad NEW (iPad3)',691,'ipad-new-ipad-3'),(698,'iPad 4',691,'ipad-4'),(699,'iPad mini',691,'ipad-mini'),(700,'iPhone',692,'iphone'),(701,'iPhone 3G/3GS',692,'iphone-3g-3gs'),(702,'iPhone 4',692,'iphone-4'),(703,'iPhone 4S',692,'iphone-4s'),(704,'iPhone 5',692,'iphone-5'),(705,'Микросхемы Apple',685,'microschemy-apple'),(836,'Защитные пленки на Apple',0,'zashitnie-plenki-na-apple'),(840,'iPad',836,'ipad-840'),(841,'iPhone',836,'iphone-841'),(842,'iPod',836,'ipod'),(843,'Mac',836,'mac'),(853,'Оборудование для ремонта Apple',0,'oborudovanie-dlya-remonta-apple'),(876,'Аксессуары для Apple',0,'aksessuary-dlya-apple'),(877,'Аксессуары iPad',876,'aksesuary-ipad'),(878,'Аксессуары iPhone',876,'aksessuary-iphone'),(879,'Аксессуары iPod',876,'aksessuary-ipod'),(880,'Аксессуары Mac',876,'aksessuary-mac'),(881,'iPad',877,'ipad-881'),(882,'iPad 2',877,'ipad-2-882'),(883,'iPad NEW 3 / iPad 4',877,'ipad-new-3-ipad-4'),(884,'iPad mini',877,'ipad-mini-884'),(885,'iPhone 3G/3GS',878,'iphone-3g-3gs-885'),(886,'iPhone 4 / 4S',878,'iphone-4-4s'),(887,'iPhone 5',878,'iphone-5-887'),(888,'Аксессуары для Apple',876,'aksessuary-dlya-apple'),(895,'iPhone 5 Lamborgini',878,'iphone-5-lamborgini');
+/*!40000 ALTER TABLE `categories` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `category`
 --
 
@@ -24,9 +50,9 @@ DROP TABLE IF EXISTS `category`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `category` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
-  `title` text COLLATE utf8mb4_unicode_520_ci,
+  `title` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -77,4 +103,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-09-15 11:41:39
+-- Dump completed on 2024-09-19 17:50:00

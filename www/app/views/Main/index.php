@@ -1,4 +1,7 @@
 <button class="btn btn-primary" id="send">Button</button>
+<p>
+    <?php new \vendor\widgets\menu\Menu() ?>
+</p>
 <?php if(!empty($posts)): ?>
     <div class="container">
         <?php foreach ($posts as $post): ?>
