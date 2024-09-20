@@ -17,8 +17,10 @@
         <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
         <li class="nav-item"><a class="nav-link" href="/page/about">About</a></li>
         <li class="nav-item"><a class="nav-link" href="/admin">Admin</a></li>
+        <li class="nav-item"><a class="nav-link" href="/user/signup">Sign up</a></li>
+        <li class="nav-item"><a class="nav-link" href="/user/login">Login</a></li>
+        <li class="nav-item"><a class="nav-link" href="/user/logout">Logout</a></li>
     </ul>
-    <h1>Layout: Default</h1>
     <?= $content ?>
 
     <?php //debug(\fw\core\Db::$countSql) ?>
