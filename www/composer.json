@@ -1,0 +1,13 @@
+{
+    "description": "fw/fw",
+    "autoload": {
+        "psr-4": {
+            "fw\\": "vendor/fw",
+            "app\\": "app"
+        }
+    },
+    "require": {
+        "monolog/monolog": "3.7.0",
+        "phpmailer/phpmailer": "v6.9.1"
+    }
+}

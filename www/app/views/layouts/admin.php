@@ -7,36 +7,23 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" type="image/png" sizes="32x32" href="/images/fav/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/images/fav/favicon-16x16.png">
-    <?php \vendor\core\base\View::getMeta() ?>
+    <?php \fw\core\base\View::getMeta() ?>
     <link rel="stylesheet" href="/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
-<div class="wrapper">
-    <?php if(!empty($menu)): ?>
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
-            <div class="container-fluid">
-                <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link" href="/page/about">About</a>
-                        </li>
-                        <?php foreach ($menu as $item): ?>
-                            <li class="nav-item">
-                                <a class="nav-link" href="<?= $item->id ?>"><?= $item->title ?></a>
-                            </li>
-                        <?php endforeach; ?>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    <?php endif; ?>
+<div class="container">
+    <ul class="nav nav-underline nav-fill">
+        <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="/page/about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="/admin">Admin</a></li>
+    </ul>
     <h1>Layout: Admin</h1>
 
     <?= $content ?>
 
-    <?php //debug(\vendor\core\Db::$countSql) ?>
-    <?php //debug(\vendor\core\Db::$queries) ?>
+    <?php //debug(\fw\core\Db::$countSql) ?>
+    <?php //debug(\fw\core\Db::$queries) ?>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script src="/bootstrap/js/bootstrap.js"></script>

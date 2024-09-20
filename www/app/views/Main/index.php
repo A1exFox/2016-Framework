@@ -1,21 +1,12 @@
 <button class="btn btn-primary" id="send">Button</button>
 <p>
-    <?php new \vendor\widgets\menu\Menu([
+    <?php new \fw\widgets\menu\Menu([
             'tpl' => WWW . '/menu/select.php',
             'container' => 'select',
             'class' => 'my-select',
             'table' => 'categories',
             'cache' => '60',
             'cache_key' => 'fw_menu_select',
-    ]); ?>
-</p>
-<p>
-    <?php new \vendor\widgets\menu\Menu([
-        'tpl' => WWW . '/menu/my_menu.php',
-        'class' => 'my-menu',
-        'table' => 'categories',
-        'cache' => '120',
-        'cache_key' => 'fw_menu_list',
     ]); ?>
 </p>
 <?php if(!empty($posts)): ?>

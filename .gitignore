@@ -3,6 +3,4 @@
 www/composer.lock
 www/vendor/*
 www/tmp
-!www/vendor/core
-!www/vendor/libs
-!www/vendor/widgets
+!www/vendor/fw
