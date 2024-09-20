@@ -27,9 +27,12 @@ class Router
                     }
                 }
                 $route['controller'] = self::upperCamelCase($route['controller']);
-                if (!isset($route['action'])) {
+                if (!isset($route['action']))
                     $route['action'] = 'index';
-                }
+                if (!isset($route['prefix']))
+                    $route['prefix'] = '';
+                else
+                    $route['prefix'] .= '\\';
                 self::$route = $route;
                 return true;
             }
@@ -40,7 +43,7 @@ class Router
     {
         $url = self::removeQueryString($url);
         if (self::matchRoute($url)) {
-            $controller = 'app\\controllers\\' . self::$route['controller'] . 'Controller';
+            $controller = 'app\\controllers\\' . self::$route['prefix'] . self::$route['controller'] . 'Controller';
             if (class_exists($controller)) {
                 $cObj = new $controller(self::$route);
                 $action = self::$route['action'];

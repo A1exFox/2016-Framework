@@ -20,12 +20,14 @@ class View
     public function render($vars)
     {
         extract($vars);
-        $file_view = APP . "/views/{$this->route['controller']}/{$this->view}.php";
+//        debug($this->route);
+        $prefix_path = str_replace('\\', '/', $this->route['prefix']);
+        $file_view = APP . "/views/{$prefix_path}{$this->route['controller']}/{$this->view}.php";
         ob_start();
         if (is_file($file_view))
             require $file_view;
         else
-            echo "<p>File view: <b>$file_view</b> is not found</p>";
+            throw new \Exception("View file <b>$file_view</b> is not found", 404);
         $content = ob_get_clean();
         if ($this->layout !== false) {
             $file_layout = APP . "/views/layouts/{$this->layout}.php";
@@ -33,7 +35,7 @@ class View
                 $content = $this->getScript($content);
                 require $file_layout;
             } else {
-                echo "<p>File layout: <b>$file_layout</b> is not found</p>";
+                throw new \Exception("layout file <b>$file_layout</b> is not found", 404);
             }
         } else {
 
