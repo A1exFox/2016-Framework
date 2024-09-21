@@ -20,9 +20,8 @@ class View
     public function render($vars)
     {
         extract($vars);
-//        debug($this->route);
-        $prefix_path = str_replace('\\', '/', $this->route['prefix']);
-        $file_view = APP . "/views/{$prefix_path}{$this->route['controller']}/{$this->view}.php";
+        $this->route['prefix'] = str_replace('\\', '/', $this->route['prefix']);
+        $file_view = APP . "/views/{$this->route['prefix']}{$this->route['controller']}/{$this->view}.php";
         ob_start();
         if (is_file($file_view))
             require $file_view;

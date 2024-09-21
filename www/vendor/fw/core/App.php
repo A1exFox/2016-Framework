@@ -8,6 +8,7 @@ class App
 
     public function __construct()
     {
+        session_start();
         new ErrorHandler();
         self::$app = Registry::instance();
     }
