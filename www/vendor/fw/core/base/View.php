@@ -17,17 +17,36 @@ class View
             $this->layout = $layout ?: LAYOUT;
         $this->view = $view;
     }
+
+    protected function compressPage($buffer)
+    {
+        $pattern[] = "#<!--.+?-->#";
+        $replace[] = "";
+
+        $pattern[] = "#>\s+<#";
+        $replace[] = "><";
+
+        $pattern[] = "#  +#";
+        $replace[] = " ";
+
+        return preg_replace($pattern, $replace, $buffer);
+//        return $buffer;
+    }
+
     public function render($vars)
     {
         extract($vars);
         $this->route['prefix'] = str_replace('\\', '/', $this->route['prefix']);
         $file_view = APP . "/views/{$this->route['prefix']}{$this->route['controller']}/{$this->view}.php";
-        ob_start();
+        ob_start([$this, 'compressPage']);
+//        ob_start('ob_gzhandler');
+//        header('Content-Encoding: gzip');
         if (is_file($file_view))
             require $file_view;
         else
             throw new \Exception("View file <b>$file_view</b> is not found", 404);
-        $content = ob_get_clean();
+        $content = ob_get_contents();
+        ob_clean();
         if ($this->layout !== false) {
             $file_layout = APP . "/views/layouts/{$this->layout}.php";
             if (is_file($file_layout)) {
@@ -39,6 +58,7 @@ class View
         } else {
 
         }
+        ob_end_flush();
     }
 
     protected function getScript($content)
