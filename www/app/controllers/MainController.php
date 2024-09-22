@@ -2,6 +2,7 @@
 namespace app\controllers;
 
 use app\models\Main;
+use fw\libs\Pagination;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
 use PHPMailer\PHPMailer\PHPMailer;
@@ -14,19 +15,19 @@ class MainController extends AppController
 //    public $layout = 'main';
     public function indexAction()
     {
-        $log = new Logger('name');
-        $log->pushHandler(new StreamHandler(ROOT . '/tmp/logs/monolog.log', Logger::WARNING));
-//        $log->warning('Foo');
-//        $log->error('Bar');
-
-        $mailer = new PHPMailer();
-//        var_dump($mailer);
-
         new Main();
-        $posts = R::findAll('posts');
+
+        $total  = R::count('posts');
+        $page = isset($_GET['page']) ? (int) $_GET['page'] : 1;
+        $perpage = 1;
+
+        $pagination = new Pagination($page, $perpage, $total);
+        $start = $pagination->getStart();
+
+        $posts = R::findAll('posts', "LIMIT $start, $perpage");
         $menu = $this->menu;
         View::setMeta('Index title', 'Description text', 'Keywords set');
-        $this->set(compact('posts', 'menu'));
+        $this->set(compact('posts', 'menu', 'pagination', 'total'));
     }
     public function testAction()
     {

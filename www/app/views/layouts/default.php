@@ -34,8 +34,6 @@
         </div>
     <?php endif; ?>
 
-    <?php debug($_SESSION); ?>
-
     <?= $content ?>
 
     <?php //debug(\fw\core\Db::$countSql) ?>

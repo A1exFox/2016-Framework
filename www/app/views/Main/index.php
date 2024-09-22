@@ -20,6 +20,12 @@
                 </div>
             </div>
         <?php endforeach; ?>
+        <div class="text-center">
+            <p>Aricles: <?= count($posts) ?>/<?= $total ?></p>
+            <?php if ($pagination->countPages > 1): ?>
+                <?= $pagination ?>
+            <?php endif; ?>
+        </div>
     </div>
 <?php endif; ?>
 
