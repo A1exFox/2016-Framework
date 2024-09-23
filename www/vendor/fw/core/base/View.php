@@ -2,6 +2,8 @@
 
 namespace fw\core\base;
 
+use fw\core\App;
+
 class View
 {
     public $route = [];
@@ -35,8 +37,10 @@ class View
 
     public function render($vars)
     {
-        extract($vars);
+        Lang::load(App::$app->getProperty('lang'), $this->route);
         $this->route['prefix'] = str_replace('\\', '/', $this->route['prefix']);
+        if (is_array($vars))
+            extract($vars);
         $file_view = APP . "/views/{$this->route['prefix']}{$this->route['controller']}/{$this->view}.php";
         ob_start([$this, 'compressPage']);
 //        ob_start('ob_gzhandler');

@@ -7,10 +7,14 @@
 //    'cache_key' => 'fw_menu_select',
 //]); ?>
 
+<?php
+//debug(\fw\core\base\Lang::$lang_data);
+?>
+
 <?php new fw\widgets\language\Language(); ?>
 <br><br>
 <div class="recent">
-    <h3>RECENT POSTS</h3>
+    <h3><?php __('recent_posts'); ?></h3>
     <ul>
         <li><a href="#">Aliquam tincidunt mauris</a></li>
         <li><a href="#">Vestibulum auctor dapibus  lipsum</a></li>
