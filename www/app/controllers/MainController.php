@@ -3,11 +3,7 @@ namespace app\controllers;
 
 use app\models\Main;
 use fw\libs\Pagination;
-use Monolog\Handler\StreamHandler;
-use Monolog\Logger;
-use PHPMailer\PHPMailer\PHPMailer;
 use R;
-use fw\core\App;
 use fw\core\base\View;
 
 class MainController extends AppController
@@ -25,9 +21,8 @@ class MainController extends AppController
         $start = $pagination->getStart();
 
         $posts = R::findAll('posts', "LIMIT $start, $perpage");
-        $menu = $this->menu;
-        View::setMeta('Index title', 'Description text', 'Keywords set');
-        $this->set(compact('posts', 'menu', 'pagination', 'total'));
+        View::setMeta('Blog | Index', 'Description text', 'Keywords set');
+        $this->set(compact('posts', 'pagination', 'total'));
     }
     public function testAction()
     {

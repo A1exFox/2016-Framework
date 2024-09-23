@@ -36,24 +36,24 @@ class Pagination
         $page1right = null;
 
         if ($this->currentPage > 1)
-            $back = "<li class='nav-item'><a class='nav-link' href='{$this->uri}page=" . ($this->currentPage - 1) . "'>&lt;</a></li>";
+            $back = "<li><a class='nav-link' href='{$this->uri}page=" . ($this->currentPage - 1) . "'>&lt;</a></li>";
         if ($this->currentPage < $this->countPages)
-            $forward = "<li class='nav-item'><a class='nav-link' href='{$this->uri}page=" . ($this->currentPage + 1) . "'>&gt;</a></li>";
+            $forward = "<li><a class='nav-link' href='{$this->uri}page=" . ($this->currentPage + 1) . "'>&gt;</a></li>";
         if ($this->currentPage > 3)
-            $startpage = "<li class='nav-item'><a class='nav-link' href='{$this->uri}page=1'>&laquo;</a></li>";
+            $startpage = "<li><a class='nav-link' href='{$this->uri}page=1'>&laquo;</a></li>";
         if ($this->currentPage < ($this->countPages - 2))
-            $endpage = "<li class='nav-item'><a class='nav-link' href='{$this->uri}page=" . $this->countPages . "'>&raquo;</a></li>";
+            $endpage = "<li><a class='nav-link' href='{$this->uri}page=" . $this->countPages . "'>&raquo;</a></li>";
         if ($this->currentPage - 2 > 0)
-            $page2left = "<li class='nav-item'><a class='nav-link' href='{$this->uri}page=" . ($this->currentPage - 2) . "'>" . ($this->currentPage - 2) . "</a></li>";
+            $page2left = "<li><a class='nav-link' href='{$this->uri}page=" . ($this->currentPage - 2) . "'>" . ($this->currentPage - 2) . "</a></li>";
         if ($this->currentPage - 1 > 0)
-            $page1left = "<li class='nav-item'><a class='nav-link' href='{$this->uri}page=" . ($this->currentPage - 1) . "'>" . ($this->currentPage - 1) . "</a></li>";
+            $page1left = "<li><a class='nav-link' href='{$this->uri}page=" . ($this->currentPage - 1) . "'>" . ($this->currentPage - 1) . "</a></li>";
         if ($this->currentPage + 1 <= $this->countPages)
-            $page1right = "<li class='nav-item'><a class='nav-link' href='{$this->uri}page=" . ($this->currentPage + 1) . "'>" . ($this->currentPage + 1) . "</a></li>";
+            $page1right = "<li><a class='nav-link' href='{$this->uri}page=" . ($this->currentPage + 1) . "'>" . ($this->currentPage + 1) . "</a></li>";
         if ($this->currentPage + 2 <= $this->countPages)
-            $page2right = "<li class='nav-item'><a class='nav-link' href='{$this->uri}page=" . ($this->currentPage + 2) . "'>" . ($this->currentPage + 2) . "</a></li>";
-        return '<ul class="nav nav-underline justify-content-center">' .
+            $page2right = "<li><a class='nav-link' href='{$this->uri}page=" . ($this->currentPage + 2) . "'>" . ($this->currentPage + 2) . "</a></li>";
+        return '<ul class="pagination">' .
             $startpage . $back . $page2left . $page1left .
-            '<li class="nav-item"><a class="nav-link active">' . $this->currentPage . '</a></li>' .
+            '<li class="active"><a>' . $this->currentPage . '</a></li>' .
             $page1right . $page2right . $forward . $endpage .
             '</ul>';
     }
