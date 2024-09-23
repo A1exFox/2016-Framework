@@ -87,7 +87,7 @@ CREATE TABLE `languages` (
 
 LOCK TABLES `languages` WRITE;
 /*!40000 ALTER TABLE `languages` DISABLE KEYS */;
-INSERT INTO `languages` VALUES (1,'ru','Русский','1'),(2,'en','English','0'),(3,'fr','France','0');
+INSERT INTO `languages` VALUES (1,'ru','Русский','1'),(2,'en','English','0');
 /*!40000 ALTER TABLE `languages` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -158,4 +158,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-09-23 15:37:42
+-- Dump completed on 2024-09-23 17:25:16

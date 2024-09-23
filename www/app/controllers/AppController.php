@@ -21,7 +21,7 @@ class AppController extends Controller
         $lang = Language::getLanguage($langs);
         App::$app->setProperty('lang', $lang);
 
-        debug(App::$app->getProperties());
+//        debug(App::$app->getProperties());
     }
 
     protected function setMeta($title = '', $description = '', $keywords = '')
