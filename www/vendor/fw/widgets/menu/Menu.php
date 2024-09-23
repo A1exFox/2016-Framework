@@ -3,6 +3,7 @@
 namespace fw\widgets\menu;
 
 use fw\core\App;
+use fw\libs\Cache;
 
 class Menu
 {
@@ -37,12 +38,15 @@ class Menu
     }
     protected function run()
     {
-        $this->menuHtml = App::$app->cache->get($this->cache_key);
+//        $this->menuHtml = App::$app->cache->get($this->cache_key);
+        $cache = new Cache();
+        $this->menuHtml = $cache->get($this->cache_key);
         if (!$this->menuHtml) {
             $this->data = \R::getAssoc("SELECT * FROM {$this->table}");
             $this->tree = $this->getTree();
             $this->menuHtml = $this->getMenuHtml($this->tree);
-            App::$app->cache->set($this->cache_key, $this->menuHtml, $this->cache);
+//            App::$app->cache->set($this->cache_key, $this->menuHtml, $this->cache);
+            $cache->set($this->cache_key, $this->menuHtml, $this->cache);
         }
         $this->output();
     }

@@ -11,7 +11,7 @@ class MainController extends AppController
 //    public $layout = 'main';
     public function indexAction()
     {
-        new Main();
+//        new Main();
 
         $total  = R::count('posts');
         $page = isset($_GET['page']) ? (int) $_GET['page'] : 1;

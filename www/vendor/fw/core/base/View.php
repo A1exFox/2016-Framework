@@ -20,17 +20,17 @@ class View
 
     protected function compressPage($buffer)
     {
-        $pattern[] = "#<!--.+?-->#";
-        $replace[] = "";
-
-        $pattern[] = "#>\s+<#";
-        $replace[] = "><";
-
-        $pattern[] = "#  +#";
-        $replace[] = " ";
-
-        return preg_replace($pattern, $replace, $buffer);
-//        return $buffer;
+//        $pattern[] = "#<!--.+?-->#";
+//        $replace[] = "";
+//
+//        $pattern[] = "#>\s+<#";
+//        $replace[] = "><";
+//
+//        $pattern[] = "#  +#";
+//        $replace[] = " ";
+//
+//        return preg_replace($pattern, $replace, $buffer);
+        return $buffer;
     }
 
     public function render($vars)
